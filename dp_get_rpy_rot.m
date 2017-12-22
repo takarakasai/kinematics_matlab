@@ -1,4 +1,4 @@
-   function [ rot ] = untitled(rpy_deg)
+function [ rot ] = untitled(rpy_deg)
 
 rad = rpy_deg / 180.0 * pi;
 

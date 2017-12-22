@@ -8,8 +8,6 @@ function dp_draw_links(link, view_)
     end
     view(view_);
 
-    light();
-    light('Position', [2,2,2]);
     axis equal;
     grid on;
     hold on;
@@ -57,11 +55,11 @@ function dp_draw_links(link, view_)
         end
 
         if link(idx).child == 0
-            radius = 0.001;
+            radius = 0.010;
         else 
             radius = 0.020;
         end
-        draw_cylinder(from + offset + joint_offset - cjoint_offset, link(idx).rot, link(idx).rot * [0,0,1]', radius, norm(link(idx).offset) - norm(joint_offset)*2.0 - norm(cjoint_offset)*2.0, 100, 'white');
+        draw_cylinder(from + offset + joint_offset - cjoint_offset, link(idx).rot, link(idx).rot * [0,0,1]', radius, norm(link(idx).offset) - norm(joint_offset)*2.0 - norm(cjoint_offset)*2.0, 10, 'white');
         % joint
         if link(idx).dir == [1,0,0]'
             rot2cylrot = dp_get_rpy_rot([0,90,0]);
@@ -70,9 +68,11 @@ function dp_draw_links(link, view_)
         else
             rot2cylrot = dp_get_rpy_rot([0,0,90]);
         end
-        draw_cylinder(from,  link(idx).rot * rot2cylrot, link(idx).rot * link(idx).dir, j_radius, j_len, 100, 'white');
+        draw_cylinder(from,  link(idx).rot * rot2cylrot, link(idx).rot * link(idx).dir, j_radius, j_len, 10, 'white');
     end
 
+    % light();
+    light('Position', [2,2,2]);
 end
 
 

@@ -4,7 +4,7 @@ link = arm_setup();
 
 %%
 
-link_idx = 9;
+link_idx = size(link, 2);
 offset = [0,0,-0.1];
 dpos = [0.6, 0.0, 0.3];
 %drot = rpy2rot([0,deg2rad(135),0]);
