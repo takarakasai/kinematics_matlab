@@ -14,8 +14,8 @@ function link = ik_pseudo_inv(link, r_idx, offset, pos, rot, thr, weight)
     end
             
     count = 0;
-    Eq = 1;
-    while Eq > thr && count < 1000
+    E = 1;
+    while E > thr && count < 1000
         
         % jacobian
         jac = jacobian(link, r_idx, offset);
