@@ -38,23 +38,23 @@ function link = ik_pseudo_inv(link, r_idx, offset, pos, rot, thr, weight)
         gk = jac' * W * err;
     
         % Gradient descent method
-        E = 1/2*(err' * W * err);
+        % E = 1/2*(err' * W * err);
         % % E = 1/2*E;
-        Hk = - (E)/(gk' * gk);
-        dq = - Hk * gk;
+        % Hk = - (E)/(gk' * gk);
+        % dq = - Hk * gk;
         
         % Solvability-Unconcerned Inverse Kinematics by theLevenberg–Marquardt Method の 式番号に対応
         % Levenberg-Marquardt method by squared-error norm w/ minute bias 
         E = err' * W * err;
         % 式(14),(15)より
-       % Wn  = E* eye(r_idx - 1) + eye(r_idx - 1) * 0.001;
+        Wn  = E* eye(r_idx - 1) + eye(r_idx - 1) * 0.001;
         % Levenberg-Marquardt method by squared-error norm
         %Wn  = E* eye(r_idx - 1);
         % 式(12) より
-       % Hk  = jac' * W * jac + Wn;
+        Hk  = jac' * W * jac + Wn;
         % 式(11) より.
         % (is equal to dq = inv(Hk) * gk)
-       % dq = Hk \ gk;
+        dq = Hk \ gk;
         %iHk = pinv(Hk);
         %dp = iHk * gk;
         
